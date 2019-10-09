@@ -1,18 +1,20 @@
 function isSkippedValue(value) {
-  return !value
+  return !value 
 }
 
 function isNumericValue(value) {
-  return !isNaN(value)
+  if (value !== '') {
+    return !isNaN(value)
+  }  
 }
 
 function isNothingValue(value) {
-  return value === null
-}
+  return value == null      // Also works if value == undefined since null == undefined => true 
+}                           // So if value = null or undefined it works both ways.
 
 function isAcceptableValue(value) {
   const operators = ['+', '-', '*', '/']
-  return typeof value === Number || operators.includes(value)
+  return typeof Number(value) === "number" || operators.includes(value)
 }
 
 function performCalculationStep(firstOperand, operator, secondOperand) {
